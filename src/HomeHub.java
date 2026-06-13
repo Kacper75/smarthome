@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class HomeHub {
     private static HomeHub instance;
-    private List<Object> devices;
+    private List<SmartDevice> devices;
 
     private HomeHub() {
         devices = new ArrayList<>();
