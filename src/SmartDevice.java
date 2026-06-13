@@ -1,4 +1,6 @@
-public class SmartDevice {
+import java.util.Comparator;
+
+public class SmartDevice implements Comparable<SmartDevice> {
     private String id;
     private String name;
     private String room;
@@ -30,6 +32,17 @@ public class SmartDevice {
         this.room = builder.room;
         this.macAddress = builder.macAddress;
         this.firmwareVersion = builder.firmwareVersion;
+    }
+
+    @Override
+    public int compareTo(SmartDevice other) {
+        int nameCompare = this.name.compareTo(other.name);
+        if (nameCompare != 0) return nameCompare;
+        if (this.room == null && other.room == null) return 0;
+        if (this.room == null) return -1;
+        if (other.room == null) return 1;
+
+        return this.room.compareTo(other.room);
     }
 
     public static class Builder {
