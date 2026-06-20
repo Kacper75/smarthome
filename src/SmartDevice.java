@@ -1,11 +1,12 @@
 import java.util.Comparator;
 
-public class SmartDevice implements Comparable<SmartDevice> {
+public class SmartDevice implements Comparable<SmartDevice>, ManageableDevice {
     private String id;
     private String name;
     private String room;
     private String macAddress;
     private double firmwareVersion;
+    private boolean isActive;
 
     public String getId() {
         return id;
@@ -26,6 +27,11 @@ public class SmartDevice implements Comparable<SmartDevice> {
     public double getFirmwareVersion() {
         return firmwareVersion;
     }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
     private SmartDevice(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
@@ -43,6 +49,24 @@ public class SmartDevice implements Comparable<SmartDevice> {
         if (other.room == null) return 1;
 
         return this.room.compareTo(other.room);
+    }
+
+    @Override
+    public void turnOn() {
+        this.isActive = true;
+        System.out.println(name + "urzadzenie wlaczone");
+    }
+
+    @Override
+    public void turnOff() {
+        this.isActive = false;
+        System.out.println(name + "urzadzenie wylaczone");
+    }
+
+    @Override
+    public String getStatus() {
+        return String.format("[%s] %s (Pokój: %s) - Status: %s",
+                id, name, room == null ? "brak" : room, isActive ? "wlaczone" : "wylaczone");
     }
 
     public static class Builder {

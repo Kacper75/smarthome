@@ -1,11 +1,8 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class HomeHub {
     private static HomeHub instance;
-    private List<SmartDevice> devices;
+    private List<ManageableDevice> devices;
 
     private HomeHub() {
         devices = new ArrayList<>();
@@ -18,8 +15,8 @@ public class HomeHub {
         return instance;
     }
 
-    public void registerDevice(SmartDevice device) {
-        for (SmartDevice existing : devices) {
+    public void registerDevice(ManageableDevice device) {
+        for (ManageableDevice existing : devices) {
             if (existing.getId().equals(device.getId())) {
                 throw new DuplicateDeviceException("Urzadzenie z tym ID już istnieje!");
             }
@@ -30,14 +27,14 @@ public class HomeHub {
         devices.add(device);
     }
 
-    public List<SmartDevice> getDevicesByRoom(String room) {
-        List<SmartDevice> result = new ArrayList<>();
-        for (SmartDevice device : devices) {
+    public List<ManageableDevice> getDevicesByRoom(String room) {
+        List<ManageableDevice> result = new ArrayList<>();
+        for (ManageableDevice device : devices) {
             if (room.equals(device.getRoom())) {
                 result.add(device);
             }
         }
-        Collections.sort(result);
+        result.sort(Comparator.comparing(ManageableDevice::getName));
         return result;
     }
 
