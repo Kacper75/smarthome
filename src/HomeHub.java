@@ -38,4 +38,10 @@ public class HomeHub {
         return result;
     }
 
+    public List<ManageableDevice> getAllDevices() {
+        return new ArrayList<>(devices);
+    }
+
+
+
 }

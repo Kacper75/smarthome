@@ -44,4 +44,9 @@ public class ThermostatAdapter implements ManageableDevice{
     public String getName() {
         return "Adapter";
     }
+
+    public void lowerTemperatureForNight() {
+        legacyThermostat.setCurrentTemperature(19.0);
+    }
+
 }
