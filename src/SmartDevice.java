@@ -54,13 +54,13 @@ public class SmartDevice implements Comparable<SmartDevice>, ManageableDevice {
     @Override
     public void turnOn() {
         this.isActive = true;
-        System.out.println(name + "urzadzenie wlaczone");
+        System.out.println(name + ":" + " urzadzenie wlaczone");
     }
 
     @Override
     public void turnOff() {
         this.isActive = false;
-        System.out.println(name + "urzadzenie wylaczone");
+        System.out.println(name + ":" + " urzadzenie wylaczone");
     }
 
     @Override

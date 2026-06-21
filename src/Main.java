@@ -9,5 +9,10 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        SmartDevice livingRoomBulbRaw = DeviceFactory.createLivingRoomBulb("20", "Żarówka");
+        ManageableDevice livingRoomBulb = new EnergyMonitoringDecorator(livingRoomBulbRaw);
+        HomeHub.getInstance().registerDevice(livingRoomBulb);
+        livingRoomBulb.turnOn();
+
     }
 }
