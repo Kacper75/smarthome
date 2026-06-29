@@ -46,6 +46,11 @@ public class ThermostatAdapter implements ManageableDevice{
         return "Adapter";
     }
 
+    @Override
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
+    }
+
     public void lowerTemperatureForNight() {
         legacyThermostat.setCurrentTemperature(19.0);
     }

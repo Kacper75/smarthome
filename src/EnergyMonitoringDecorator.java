@@ -11,4 +11,9 @@ public class EnergyMonitoringDecorator extends DeviceDecorator {
         super.turnOn();
         System.out.println("Zarejestrowano czas uruchomienia: " + LocalDateTime.now());
     }
+
+    @Override
+    public void accept(DeviceVisitor visitor) {
+
+    }
 }

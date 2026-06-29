@@ -16,6 +16,12 @@ public class SmartDevice implements Comparable<SmartDevice>, ManageableDevice {
         return name;
     }
 
+    @Override
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
+    }
+
+
     public String getRoom() {
         return room;
     }

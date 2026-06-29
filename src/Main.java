@@ -53,5 +53,6 @@ public class Main {
         bedroomBlind.closeBlind();
         bedroomBlind.stopBlind();
 
+
     }
 }

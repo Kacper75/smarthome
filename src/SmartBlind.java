@@ -67,4 +67,9 @@ public class SmartBlind implements ManageableDevice {
     public String getName() {
         return name;
     }
+
+    @Override
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
+    }
 }
