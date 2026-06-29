@@ -47,5 +47,11 @@ public class Main {
         thermostatAdapter.setStrategy(new ComfortStrategy());
         thermostatAdapter.adjustTemperature(false);
 
+        SmartBlind bedroomBlind = new SmartBlind("60", "Roleta", "Sypialnia");
+        bedroomBlind.openBlind();
+        bedroomBlind.stopBlind();
+        bedroomBlind.closeBlind();
+        bedroomBlind.stopBlind();
+
     }
 }
