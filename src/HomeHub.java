@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class HomeHub {
+public class HomeHub implements SensorObserver {
     private static HomeHub instance;
     private List<ManageableDevice> devices;
 
@@ -43,5 +43,8 @@ public class HomeHub {
     }
 
 
-
+    @Override
+    public void onSensorTriggered(String sensorId, String eventDetails) {
+        System.out.println("ALARM: Wykryto ruch z czujnika [" + sensorId + "] " + eventDetails);
+    }
 }

@@ -34,7 +34,11 @@ public class Main {
         smartHomeFacade.movieMode();
         smartHomeFacade.goodNightRoutine();
 
+        HomeHub hub = HomeHub.getInstance();
+        MotionSensor sensor = new MotionSensor("MS-01");
 
+        sensor.attach(hub);
+        sensor.detectMotion();
 
     }
 }
