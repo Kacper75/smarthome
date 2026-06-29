@@ -40,5 +40,12 @@ public class Main {
         sensor.attach(hub);
         sensor.detectMotion();
 
+        thermostatAdapter.setStrategy(new EcoStrategy());
+        thermostatAdapter.adjustTemperature(false);
+        thermostatAdapter.adjustTemperature(true);
+
+        thermostatAdapter.setStrategy(new ComfortStrategy());
+        thermostatAdapter.adjustTemperature(false);
+
     }
 }

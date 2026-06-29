@@ -2,6 +2,7 @@ public class ThermostatAdapter implements ManageableDevice{
     private final LegacyThermostat legacyThermostat;
     private final String id;
     private final String room;
+    private  HeatingStrategy heatingStrategy;
 
     public ThermostatAdapter(LegacyThermostat legacyThermostat, String id, String room) {
         this.legacyThermostat = legacyThermostat;
@@ -47,6 +48,20 @@ public class ThermostatAdapter implements ManageableDevice{
 
     public void lowerTemperatureForNight() {
         legacyThermostat.setCurrentTemperature(19.0);
+    }
+
+    public void setStrategy(HeatingStrategy heatingStrategy) {
+        this.heatingStrategy = heatingStrategy;
+    }
+
+    public void adjustTemperature(boolean isSomeoneHome) {
+        if (heatingStrategy == null) {
+            System.out.println("Brak ustawionej strategii ogrzewania");
+            return;
+        }
+        double currentTemp = legacyThermostat.fetchCurrentTemperature();
+        double targetTemp = heatingStrategy.calculateTargetTemperature(currentTemp, isSomeoneHome);
+        legacyThermostat.setCurrentTemperature(targetTemp);
     }
 
 }
