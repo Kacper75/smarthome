@@ -53,6 +53,12 @@ public class Main {
         bedroomBlind.closeBlind();
         bedroomBlind.stopBlind();
 
+        bedroomBlind.closeBlind();
+        bedroomBlind.stopBlind();
+
+        System.out.println("\nUruchamianie diagnostyki systemu...");
+        homeHub.runDiagnostics();
+
 
     }
 }

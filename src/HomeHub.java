@@ -47,4 +47,14 @@ public class HomeHub implements SensorObserver {
     public void onSensorTriggered(String sensorId, String eventDetails) {
         System.out.println("ALARM: Wykryto ruch z czujnika [" + sensorId + "] " + eventDetails);
     }
+
+    public void runDiagnostics() {
+        DiagnosticsVisitor visitor = new DiagnosticsVisitor();
+
+        for (ManageableDevice device : devices) {
+            device.accept(visitor);
+        }
+
+        System.out.println(visitor.getReport());
+    }
 }

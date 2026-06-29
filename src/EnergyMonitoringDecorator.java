@@ -14,6 +14,8 @@ public class EnergyMonitoringDecorator extends DeviceDecorator {
 
     @Override
     public void accept(DeviceVisitor visitor) {
-
+        if (wrappedDevice != null) {
+            wrappedDevice.accept(visitor);
+        }
     }
 }
